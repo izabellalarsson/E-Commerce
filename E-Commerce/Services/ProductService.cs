@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Dapper;
 using MySql.Data.MySqlClient;
+using System.Web.Http;
+
 
 namespace ECommerce.Models
 {
@@ -22,6 +24,18 @@ namespace ECommerce.Models
         public List<Product> Get()
         {
             return this.productRepository.Get();
+        }
+
+        public static void Register(HttpConfiguration config)
+        {
+            // New code
+            config.EnableCors();
+
+            //config.Routes.MapHttpRoute(
+            //    name: "DefaultApi",
+            //    routeTemplate: "api/{controller}/{id}",
+            //    defaults: new { id = RouteParameter.Optional }
+            //);
         }
 
     }

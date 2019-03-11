@@ -5,9 +5,17 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
+using System.Web.Http.Cors;
+//using System.Web.Http;
+
 
 namespace ECommerce.Models
 {
+    [EnableCors(origins: "http:/e-commerce.test", headers: "*", methods: "*")]
+    //public class TestController : ApiController
+    //{
+    //    // Controller methods not shown...
+    //}
     [Route("api/[controller]")]
     public class ProductController : Controller
     {
@@ -25,5 +33,7 @@ namespace ECommerce.Models
         {
             return this.Ok(this.productService.Get());
         }
+
+
     }
 }

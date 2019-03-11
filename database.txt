@@ -4,3 +4,5 @@ CREATE TABLE `e-Commerce`.`products`
  `product_description` TEXT NOT NULL , 
  `product_image` TEXT NOT NULL , 
  PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+INSERT INTO Products(product_name, product_description) VALUES("Duffy Beer", "A great beer for all occasions")
