@@ -38,5 +38,17 @@ namespace ECommerce.Models
             //);
         }
 
+        public bool Add(Product product)
+        {
+            if (product == null)
+            {
+                return false;
+            }
+
+            this.productRepository.Add(product);
+
+            return true;
+        }
+
     }
 }

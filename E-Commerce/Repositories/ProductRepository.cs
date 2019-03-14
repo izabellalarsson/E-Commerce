@@ -28,5 +28,20 @@ namespace ECommerce.Models
                 return products;
             }
         }
+
+        public void Add(Product product)
+        {
+            using (var connection = new MySqlConnection(this.connectionString))
+            {
+                connection.Execute("INSERT INTO products(" +
+            	                    "ProductName, " +
+            	                    "ProductDescription) " +
+            	                    "VALUES(" +
+            	                    "@productName, " +
+                                   "@productDescription)", product);
+
+               
+            }
+        }
     }
 }

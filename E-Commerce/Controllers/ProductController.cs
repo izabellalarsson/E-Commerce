@@ -34,6 +34,24 @@ namespace ECommerce.Models
             return this.Ok(this.productService.Get());
         }
 
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult Post([FromBody]Product product)
+        {
+
+            var result = this.productService.Add(product);
+
+
+            if (!result)
+            {
+                return this.BadRequest("fail");
+            }
+
+
+            return Ok("succes");
+        }
+
 
     }
 }
