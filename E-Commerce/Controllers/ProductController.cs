@@ -11,11 +11,11 @@ using System.Web.Http.Cors;
 
 namespace ECommerce.Models
 {
-    [EnableCors(origins: "http:/e-commerce.test", headers: "*", methods: "*")]
     //public class TestController : ApiController
     //{
     //    // Controller methods not shown...
     //}
+    [EnableCors(origins: "http://e-commerce.test", headers: "*", methods: "*")]
     [Route("api/[controller]")]
     public class ProductController : Controller
     {
