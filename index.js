@@ -5,16 +5,16 @@ const value1 = document.querySelector("input[name='name']")
 const value2 = document.querySelector("input[name='description']")
 
 
-// fetch(url)
-// .then(res => res.json())
-// .then(data =>
-//     // {
-//     //     const div = document.createElement('div');
-//     //     const container = document.querySelector('.products-container');
-//     //     div.innerText = data.productName;
-//     //     container.appendChild(div);
-//     // }, 
-//     console.log(data))
+fetch(url)
+.then(res => res.json())
+.then(data =>
+    // {
+    //     const div = document.createElement('div');
+    //     const container = document.querySelector('.products-container');
+    //     div.innerText = data.productName;
+    //     container.appendChild(div);
+    // }, 
+    console.log(data))
 
 
 updateBtn.addEventListener('click', (e) => {

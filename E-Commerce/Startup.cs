@@ -31,9 +31,9 @@ namespace E_Commerce
                 options.AddPolicy(MyAllowSpecificOrigins,
                 builder =>
                 {
-                    builder.WithOrigins("http://e-commerce.test")
-                                        .AllowAnyHeader()
-                                        .AllowAnyMethod();
+                    builder.WithOrigins("http://e-commerce.test");
+                                        //.AllowAnyHeader()
+                                        //.AllowAnyMethod();
                 });
 
             });

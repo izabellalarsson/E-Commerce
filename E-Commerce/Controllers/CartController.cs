@@ -17,30 +17,30 @@ namespace ECommerce.Models
     //}
     [EnableCors(origins: "http://e-commerce.test", headers: "*", methods: "*")]
     [Route("api/[controller]")]
-    public class ProductController : Controller
+    public class CartController : Controller
     {
-        private readonly ProductService productService;
+        private readonly CartService cartService;
 
-        public ProductController(IConfiguration configuration)
+        public CartController(IConfiguration configuration)
         {
             var connectionString = configuration.GetConnectionString("ConnectionString");
-            this.productService = new ProductService(new ProductRepository(connectionString));
+            this.cartService = new CartService(new CartRepository(connectionString));
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(List<Product>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<Cart>), StatusCodes.Status200OK)]
         public IActionResult Get()
         {
-            return this.Ok(this.productService.Get());
+            return this.Ok(this.cartService.Get());
         }
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult Post([FromBody]Product product)
+        public IActionResult Post([FromBody]Cart cart)
         {
 
-            var result = this.productService.Add(product);
+            var result = this.cartService.Add(cart);
 
 
             if (!result)

@@ -1,8 +1,22 @@
-CREATE TABLE `e-Commerce`.`products` 
-( `id` INT NOT NULL AUTO_INCREMENT ,
- `product_name` TEXT NOT NULL , 
- `product_description` TEXT NOT NULL , 
- `product_image` TEXT NOT NULL , 
- PRIMARY KEY (`id`)) ENGINE = InnoDB;
+CREATE TABLE `products` (
+  `ProductId` int(11) NOT NULL,
+  `ProductName` text NOT NULL,
+  `ProductDescription` text NOT NULL,
+  `ProductImage` text,
+  `ProductPrice` int(11) NOT NULL DEFAULT '120'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO Products(product_name, product_description) VALUES("Duffy Beer", "A great beer for all occasions")
+INSERT INTO products(ProductName, ProductDescription) VALUES("Duffy Beer", "A great beer for all occasions")
+
+CREATE TABLE `cart` (
+  `CartId` int(11) NOT NULL,
+  `CartTotalPrice` int(11) NOT NULL,
+  `UserId` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `cartItems` (
+  `CartItemId` int(11) NOT NULL,
+  `CartId` int(11) NOT NULL,
+  `ProductId` int(11) NOT NULL,
+  `Quantity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
