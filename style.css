@@ -44,7 +44,36 @@ a {
 
 .products-container {
     width: 100%;
-    /* height: auto; */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
+
+.products-container img {
+    display: flex; 
+    flex-direction: column;
+    width: 100%;
+}
+
+.product-item {
+    border-radius: 2%;
+    border: 2px solid #000;
+    margin: 10px;
+}
+
+.product-item h3 {
+    margin: 10px;
+}
+
+.product-item p {
+    margin: 10px;
+}
+
+.product-item .product-item-price {
+    color: red;
+    text-align: right;
+}
+
+
+
+
+

@@ -23,7 +23,7 @@ namespace ECommerce.Models
         {
             using (var connection = new MySqlConnection(this.connectionString))
             {
-                var cartItem = connection.Query<CartItem>("SELECT * FROM cartItem").ToList();
+                var cartItem = connection.Query<CartItem>("SELECT * FROM cartItems").ToList();
 
                 return cartItem;
             }
@@ -32,16 +32,8 @@ namespace ECommerce.Models
         public void Add(CartItem cartItem)
         {
             using (var connection = new MySqlConnection(this.connectionString))
-            {
-                connection.Execute("INSERT INTO cartItem(" +
-                                    "CartId " +
-                                    "ProductId " +
-                                    "Quantity) " +
-                                    "VALUES(" +
-                                    "@cartProduct" +
-                                    "@quantity" +
-                                   "@cartId)", cartItem);
-
+            { 
+            connection.Execute("INSERT INTO cartItems(CartId, ProductId, Quantity) VALUES(@cartProduct @quantity @cartId)", cartItem);
 
             }
         }

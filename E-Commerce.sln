@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E-Commerce", "E-Commerce\E-Commerce.csproj", "{7761E92A-1BAA-428A-830F-27029975CD24}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E-Commerce.UnitTests", "E-Commerce.UnitTests\E-Commerce.UnitTests.csproj", "{E48D98CE-7F78-4AE6-A3E6-265E3F55C212}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,5 +15,9 @@ Global
 		{7761E92A-1BAA-428A-830F-27029975CD24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7761E92A-1BAA-428A-830F-27029975CD24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7761E92A-1BAA-428A-830F-27029975CD24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E48D98CE-7F78-4AE6-A3E6-265E3F55C212}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E48D98CE-7F78-4AE6-A3E6-265E3F55C212}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E48D98CE-7F78-4AE6-A3E6-265E3F55C212}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E48D98CE-7F78-4AE6-A3E6-265E3F55C212}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
