@@ -31,7 +31,7 @@ namespace E_Commerce
                 options.AddPolicy(MyAllowSpecificOrigins,
                 builder =>
                 {
-                    builder.WithOrigins("http://e-commerce.test");
+                    builder.WithOrigins("http://localhost:3000");
                                         //.AllowAnyHeader()
                                         //.AllowAnyMethod();
                 });
