@@ -14,9 +14,9 @@ namespace ECommerce.Models
 {
     public class ProductService
     {
-        private readonly ProductRepository productRepository;
+        private readonly IProductRepository productRepository;
 
-        public ProductService(ProductRepository productRepository)
+        public ProductService(IProductRepository productRepository)
         {
             this.productRepository = productRepository;
         }
@@ -24,6 +24,15 @@ namespace ECommerce.Models
         public List<Product> Get()
         {
             return this.productRepository.Get();
+        }
+
+        public Product Get(int id)
+        {
+            if (id < 1)
+            {
+                return null;
+            }
+            return this.productRepository.Get(id);
         }
 
         public static void Register(HttpConfiguration config)

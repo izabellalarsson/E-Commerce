@@ -21,9 +21,9 @@ namespace ECommerce.Models
             this.cartRepository = cartRepository;
         }
 
-        public List<Cart> Get()
+        public Cart Get(int id)
         {
-            return this.cartRepository.Get();
+            return cartRepository.Get(id);
         }
 
         public static void Register(HttpConfiguration config)
@@ -38,16 +38,23 @@ namespace ECommerce.Models
             //);
         }
 
-        public bool Add(Cart cart)
+        public Cart Add(int productId, int cartId, int quantity)
         {
-            if (cart == null)
-            {
-                return false;
-            }
+            //if (cart == null)
+            //{
+            //    return false;
+            //}
 
-            this.cartRepository.Add(cart);
+            this.cartRepository.Add(productId, cartId, quantity);
 
-            return true;
+            var cart = cartRepository.Get(cartId);
+
+            return cart;
+        }
+
+        public void Delete(int productId, int cartId)
+        {
+            this.cartRepository.Delete(productId, cartId);
         }
 
     }

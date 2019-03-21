@@ -19,24 +19,30 @@ namespace ECommerce.Models
             this.connectionString = connectionString;
         }
 
-        public List<Cart> Get()
+        public Cart Get(int id)
         {
             using (var connection = new MySqlConnection(this.connectionString))
             {
-                var cart = connection.Query<Cart>("SELECT * FROM cart").ToList();
+                var cart = connection.QuerySingleOrDefault<Cart>("SELECT * FROM cart WHERE CartId = @id", new { id });
+                cart.Products = connection.Query<Product>("SELECT * FROM cartItems c INNER JOIN products p ON c.ProductId = p.ProductId WHERE c.CartId = @id", new { id }).ToList();
 
                 return cart;
             }
         }
 
-        public void Add(Cart cart)
+        public void Add(int productId, int cartId, int quantity)
         {
             using (var connection = new MySqlConnection(this.connectionString))
             {
-                connection.Execute("INSERT INTO cart(" +
-                                    "CartTotalPrice) " +
-                                    "VALUES(" +
-                                   "@cartTotalPrice)", cart);
+                connection.Execute("INSERT INTO cartItems(CartId, ProductId, Quantity) VALUES(@cartId, @productId, @quantity)", new { cartId, productId, quantity });
+            }
+        }
+
+        public void Delete(int productId, int cartId)
+        {
+            using (var connection = new MySqlConnection(this.connectionString))
+            {
+                connection.Execute("DELETE FROM cartItems WHERE ProductId = @productId AND CartId = @cartId", new { cartId, productId });
             }
         }
     }

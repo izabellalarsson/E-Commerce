@@ -9,7 +9,6 @@
     <Folder Include="Models\" />
     <Folder Include="Repositories\" />
     <Folder Include="Services\" />
-    <Folder Include="UnitTests\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,4 +22,9 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Repositories\CartItemRepository.cs" />
+    <Compile Remove="Controllers\CartItemController.cs" />
+    <Compile Remove="Services\CartItemService.cs" />
+  </ItemGroup>
 </Project>

@@ -10,7 +10,7 @@ namespace ECommerce.UnitTests
         }
 
         [Test]
-        public void Addproduct_GivenProcuct_ReturnsSucces()
+        public void AddProduct_GivenProcuct_ReturnsSuccess()
         {
             //Arrange 
             //const AddCargoResult Cargo = ;

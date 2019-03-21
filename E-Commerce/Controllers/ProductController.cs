@@ -52,6 +52,20 @@ namespace ECommerce.Models
             return Ok("success");
         }
 
+        [HttpGet("{id}")]
+        [ProducesResponseType(typeof(Product), StatusCodes.Status200OK)]
+        public IActionResult Get(int id)
+        {
+
+            var productItem = this.productService.Get(id);
+
+            if (productItem == null)
+            {
+                return this.NotFound();
+            }
+            return this.Ok(this.productService.Get(id));
+        }
+
 
     }
 }

@@ -10,7 +10,7 @@ using MySql.Data.MySqlClient;
 
 namespace ECommerce.Models
 {
-    public class ProductRepository
+    public class ProductRepository : IProductRepository
     {
         private readonly string connectionString;
 
@@ -26,6 +26,22 @@ namespace ECommerce.Models
                 var products = connection.Query<Product>("SELECT * FROM products").ToList();
 
                 return products;
+            }
+        }      
+
+        public Product Get(int id)
+        {
+            using (var connection = new MySqlConnection(this.connectionString))
+            {
+                var productItem = connection.QuerySingleOrDefault<Product>("SELECT * FROM products WHERE Id = @id", new { id });
+
+                if (productItem == null)
+                {
+                    return null;
+                }
+
+                return productItem;
+
             }
         }
 

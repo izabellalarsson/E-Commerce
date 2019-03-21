@@ -27,31 +27,44 @@ namespace ECommerce.Models
             this.cartService = new CartService(new CartRepository(connectionString));
         }
 
-        [HttpGet]
-        [ProducesResponseType(typeof(List<Cart>), StatusCodes.Status200OK)]
-        public IActionResult Get()
+        [HttpGet("{id}")]
+        [ProducesResponseType(typeof(Cart), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Cart), StatusCodes.Status404NotFound)]
+        public IActionResult Get(int id)
         {
-            return this.Ok(this.cartService.Get());
+            var cart = cartService.Get(id);
+            if (cart == null)
+            {
+                return NotFound();
+            }
+            return Ok(cart);
         }
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult Post([FromBody]Cart cart)
+        public IActionResult Add([FromBody]CartItem cartItem)
         {
+            var cart = this.cartService.Add(cartItem.ProductId, cartItem.CartId, cartItem.Quantity);
 
-            var result = this.cartService.Add(cart);
-
-
-            if (!result)
-            {
-                return this.BadRequest("fail");
-            }
-
-
-            return Ok("success");
+            return Ok(cart);
         }
 
+        [HttpDelete]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public IActionResult Remove([FromBody]CartItem cartItem)
+        {
+            cartService.Delete(cartItem.ProductId, cartItem.CartId);
+            return Ok();
+        }
+
+        ////ADD an update
+        //public IActionResult Update(CartItem cartItem)
+        //{
+        //    cartService.Update(cartItem.ProductId, cartItem.CartId, cartItem.Quantity);
+        //    return Ok();
+        //}
 
     }
 }

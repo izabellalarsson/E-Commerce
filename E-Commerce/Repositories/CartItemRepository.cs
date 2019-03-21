@@ -33,7 +33,7 @@ namespace ECommerce.Models
         {
             using (var connection = new MySqlConnection(this.connectionString))
             { 
-            connection.Execute("INSERT INTO cartItems(CartId, ProductId, Quantity) VALUES(@cartProduct @quantity @cartId)", cartItem);
+            connection.Execute("INSERT INTO cartItems(CartId, ProductId, Quantity) VALUES(@productId @quantity @cartId)", cartItem);
 
             }
         }
