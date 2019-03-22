@@ -15,6 +15,14 @@ namespace ECommerce.Models
     public class CartService
     {
         private readonly CartRepository cartRepository;
+        public readonly OrdersRepository ordersRepository;
+
+        public CartService(CartRepository cartRepository, OrdersRepository ordersRepository)
+        {
+            this.cartRepository = cartRepository;
+            this.ordersRepository = ordersRepository;
+
+        }
 
         public CartService(CartRepository cartRepository)
         {
@@ -40,11 +48,6 @@ namespace ECommerce.Models
 
         public Cart Add(int productId, int cartId, int quantity)
         {
-            //if (cart == null)
-            //{
-            //    return false;
-            //}
-
             this.cartRepository.Add(productId, cartId, quantity);
 
             var cart = cartRepository.Get(cartId);
