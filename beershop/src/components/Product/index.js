@@ -14,7 +14,7 @@ class Product extends Component {
 
     componentDidMount() {
         this.fetchProducts();
-        this.handleClick();
+        // this.handleClick();
         // this.addProductToCart();
     }
 
@@ -40,59 +40,30 @@ class Product extends Component {
         )
     }
 
-    addProductToCart = () => {
-        // console.log(this.state.products)
-        this.state.products.map(item => {
-        const result = item.filter(product => item.productId == product.productId)
-        console.log(result);
-        //     console.log(item)
-        //     // item.filter(choice => choice.productId == item.productId)
-        //     // console.log(choice)
-        })
-        // this.state.products.map(item => {
-        //     console.log(item)
-        //     // fetch("http://localhost:5000/api/cart/1", {
-        //     //     method: 'POST',
-        //     //     body: JSON.stringify(item.productId),
-        //     //     headers: {
-        //     //         'Accept': 'application/json',
-        //     //         'Content-Type': 'application/json',
-        //     //     },
-        //     // })
-        //     // .then(res => res.json())
-        //     // .then(data =>
-        //     //     console.log(data)
-        //     //     // data.map(item => {
-        //     //     //     console.log(item.productDescription)
-        //     //     //     this.setState({
-        //     //     //         products: [
-        //     //     //             ...this.state.products,
-        //     //     //             {
-        //     //     //                 productId: item.productId,
-        //     //     //                 productName: item.productName,
-        //     //     //                 productDescription: item.productDescription,
-        //     //     //                 productImage: item.productImage,
-        //     //     //                 productPrice: item.productPrice
-    
-        //     //     //             }
-        //     //     //         ],
-        //     //     //     })
-    
-        //     //     // })
-        //     // )
-        // })
-    }
+    addProductToCart = (productId) => {
+        
+            fetch("http://localhost:5000/api/cart/", {
+                method: 'POST',
+                body: JSON.stringify({productId: productId, cartId: 1, quantity: 1}),
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+            })
+}
 
-    handleClick = () => {
-        this.addProductToCart();
-        // console.log('hej')
+    handleClick = (productId) => {
+        this.addProductToCart(productId)
+        console.log(productId)
+        // .filter(products => products.product.productId === products.productId);
+        // console.log(this.state.products)
     }
 
     render(){
         return (
             <div className="products-container">
                 {this.state.products.map(product => (
-                    <ProductList onClick={this.handleClick} key={product.productId} name={product.productName} image={product.productImage} description={product.productDescription} price={product.productPrice}></ProductList>
+                    <ProductList onClick={() => this.handleClick(product.productId)} key={product.productId} name={product.productName} image={product.productImage} description={product.productDescription} price={product.productPrice}></ProductList>
                 ))}
             </div>
     );

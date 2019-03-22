@@ -41,7 +41,7 @@ const ProductListStyled = styled.div`
 const ProductList = ({onClick, image, name, description, price, props}) => {
     return (
         <ProductListStyled>
-        {/* {console.log(onClick)} */}
+        {/* {console.log(name)} */}
             <h1>{name}</h1>
             <img src={image} alt="" />
             <p>{description}</p>

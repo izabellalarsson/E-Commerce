@@ -32,7 +32,7 @@ namespace ECommerce.Models
         public Order Get(int id)
         {
             var order = orderRepository.Get(id);
-            order.Cart = cartRepository.Get(cart.CartId);
+            //order.Cart = cartRepository.Get(cart.CartId);
             order.Customer = customerRepository.Get(order.CustomerId);
 
             return order;
