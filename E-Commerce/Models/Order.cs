@@ -1,14 +1,15 @@
 ﻿using System;
 namespace ECommerce.Models
 {
-    public class Orders
+    public class Order
     {
         public int OrderId { get; set; }
-        public int CostumerId { get; set; }
+        public int CustomerId { get; set; }
         public int TotalPrice { get; set; }
         public Cart Cart { get; set; }
+        public Customer Customer { get; set; }
         
-         public Orders()
+         public Order()
         {
         }
     }

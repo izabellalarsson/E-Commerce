@@ -26,5 +26,6 @@
     <Compile Remove="Repositories\CartItemRepository.cs" />
     <Compile Remove="Controllers\CartItemController.cs" />
     <Compile Remove="Services\CartItemService.cs" />
+    <Compile Remove="Services\CustomerService.cs" />
   </ItemGroup>
 </Project>

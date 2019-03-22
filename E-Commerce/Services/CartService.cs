@@ -15,12 +15,12 @@ namespace ECommerce.Models
     public class CartService
     {
         private readonly CartRepository cartRepository;
-        public readonly OrdersRepository ordersRepository;
+        public readonly OrderRepository orderRepository;
 
-        public CartService(CartRepository cartRepository, OrdersRepository ordersRepository)
+        public CartService(CartRepository cartRepository, OrderRepository orderRepository)
         {
             this.cartRepository = cartRepository;
-            this.ordersRepository = ordersRepository;
+            this.orderRepository = orderRepository;
 
         }
 
