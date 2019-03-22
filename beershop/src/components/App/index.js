@@ -1,36 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
-import {Route} from 'react-router-dom'
-import Header from '../Header'
-import Product from '../Product'
+import {Route} from 'react-router-dom';
+import Home from '../Home';
+import Header from '../Header';
+import Product from '../Product';
+import Cart from '../Cart';
 
-
-
-class App extends Component {
-
-  state = {
-
-  }
-
-  componentDidMount() {
-    this.fetchProducts();
-  }
-
- fetchProducts = () => {
-    fetch("http://localhost:5000/api/product")
-    .then(res => res.json())
-    .then(data => console.log(data))
-  }
-  render() {
-    return (
-      <div className="App">
+const App = () => {
+  return (
+    <div className="App">
       <Header/>
-      <Route exact path='/' component={App}/>
+      <Route exact path='/' component={Home}/>
       <Route path='/products' component={Product}/>
-      {/* <Route path='/cart' component={Cart}/> */}
-      </div>
-    );
-  }
+      <Route path='/cart' component={Cart}/>
+    </div>
+  );
 }
 
 export default App;

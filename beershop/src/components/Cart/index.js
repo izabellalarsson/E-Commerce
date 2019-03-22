@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Product = props => {
+const Cart = props => {
     return (
         <div>
             
@@ -9,8 +9,8 @@ const Product = props => {
     );
 };
 
-Product.propTypes = {
+Cart.propTypes = {
     
 };
 
-export default Product;
+export default Cart;

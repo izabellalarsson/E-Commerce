@@ -9,7 +9,10 @@ const Header = props => {
         <nav className="navbar">
             <ul className="navbar-nav">
                 <li>
-                    <img src="" alt="" />
+                    <Link to='/'>
+                    Home
+                        <img src="" alt="" />
+                    </Link>
                 </li>
                 <li>
                     <Link to='/product'>Products</Link> 
