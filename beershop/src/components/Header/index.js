@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import './Header.css'
 import {Link} from 'react-router-dom'
 
@@ -15,9 +15,9 @@ const Header = props => {
                     </Link>
                 </li>
                 <li>
-                    <Link to='/product'>Products</Link> 
+                    <Link to='/products'>Products</Link> 
                 </li>
-                <li>
+                {/* <li>
                     <a href="#">Register</a>
                 </li>
                 <li>
@@ -25,7 +25,7 @@ const Header = props => {
                 </li>
                 <li>
                     <a href="#">Admin</a>
-                </li>
+                </li> */}
                 <li>
                     <Link to='/cart'>Cart
                         <i className="fas fa-shopping-cart"></i>

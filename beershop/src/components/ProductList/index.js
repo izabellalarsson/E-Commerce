@@ -38,14 +38,15 @@ const ProductListStyled = styled.div`
 
 `;
 
-const ProductList = ({props, image, name, description, price}) => {
+const ProductList = ({onClick, image, name, description, price, props}) => {
     return (
         <ProductListStyled>
+        {/* {console.log(onClick)} */}
             <h1>{name}</h1>
             <img src={image} alt="" />
             <p>{description}</p>
             <p>{price} SEK</p>
-            <button >Buy it here!</button>
+            <button onClick={onClick}>Buy it here!</button>
         </ProductListStyled>   
 );
 };
