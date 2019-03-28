@@ -33,7 +33,7 @@ namespace ECommerce.Models
         {
             using (var connection = new MySqlConnection(this.connectionString))
             {
-                var productItem = connection.QuerySingleOrDefault<Product>("SELECT * FROM products WHERE Id = @id", new { id });
+                var productItem = connection.QuerySingleOrDefault<Product>("SELECT * FROM products WHERE ProductId = @id", new { id });
 
                 if (productItem == null)
                 {

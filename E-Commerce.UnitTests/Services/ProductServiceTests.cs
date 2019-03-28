@@ -33,7 +33,7 @@ namespace ECommerce.Models
                 ProductId = 12,
                 ProductName = "Beer",
                 ProductImage = null,
-                ProductPrice = "120",
+                ProductPrice = 120,
                 ProductDescription = "This is my favorite beer"
             };
 
@@ -58,7 +58,7 @@ namespace ECommerce.Models
                 ProductId = 12,
                 ProductName = "Beer",
                 ProductImage = null,
-                ProductPrice = "120",
+                ProductPrice = 120,
                 ProductDescription = "This is my favorite beer"
             };
 
