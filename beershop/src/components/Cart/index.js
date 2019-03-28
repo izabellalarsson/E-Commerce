@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import CartList from '../CartList'
-
 class Cart extends Component {
     constructor() {
         super();
@@ -28,16 +26,12 @@ fetchCart = () => {
         return (
             <div>
                 {/* <h2>{this.state.cart.productName}</h2> */}
-                {this.state.cart.map(item => (
-                    <CartList text={item.productName} price={item.productPrice}/>
+                {this.state.cart.map((item, index) => (
+                    <CartList key={index} text={item.productName} price={item.productPrice}/>
                 ))}
             </div>
         );
     }
 }
-
-Cart.propTypes = {
-
-};
 
 export default Cart;
