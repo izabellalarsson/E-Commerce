@@ -24,7 +24,7 @@ namespace ECommerce.Models
             using (var connection = new MySqlConnection(this.connectionString))
             {
                 var order = connection.QuerySingleOrDefault<Order>("SELECT * FROM order WHERE OrderId = @id", new { id });
-                order.Customer = connection.Query<Product>("SELECT * FROM orderItems c INNER JOIN cart p ON c.productName = p.ProductName AND c.ProductPrice = p.ProductPrice WHERE c.Cartid = @id", new { id }).ToList();
+                //order.Customer = connection.Query<Product>("SELECT * FROM orderItems c INNER JOIN cart p ON c.productName = p.ProductName AND c.ProductPrice = p.ProductPrice WHERE c.Cartid = @id", new { id }).ToList();
 
                 return order;
             }
