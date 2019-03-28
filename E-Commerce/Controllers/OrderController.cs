@@ -52,12 +52,12 @@ namespace ECommerce.Models
             return Ok(cart);
         }
 
-        [HttpPost]
+        [HttpPost("{id}")]
         [ProducesResponseType(typeof(Order), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Order), StatusCodes.Status404NotFound)]
-        public IActionResult Create([FromBody]Order order)
+        public IActionResult Create([FromBody]Customer customer, int cartId)
         {
-            return Ok(this.orderService.Create(order.Cart, order.Customer));
+            return Ok(this.orderService.Create(customer, cartId));
         }
     }
 }

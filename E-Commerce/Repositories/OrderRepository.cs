@@ -19,27 +19,18 @@ namespace ECommerce.Models
             this.connectionString = connectionString;
         }
 
-        public List<Order> Get()
-        {
-            using (var connection = new MySqlConnection(this.connectionString))
-            {
-                var orders = connection.Query<Order>("SELECT * FROM orders").ToList();
-
-                return orders;
-            }
-        }
-
         public Order Get(int id)
         {
             using (var connection = new MySqlConnection(this.connectionString))
             {
-                var orderId = connection.QuerySingleOrDefault<Order>("SELECT * FROM orders WHERE OrderId = @id", new { id });
+                var order = connection.QuerySingleOrDefault<Order>("SELECT * FROM order WHERE OrderId = @id", new { id });
+                order.Customer = connection.Query<Product>("SELECT * FROM orderItems c INNER JOIN cart p ON c.productName = p.ProductName AND c.ProductPrice = p.ProductPrice WHERE c.Cartid = @id", new { id }).ToList();
 
-                return orderId;
+                return order;
             }
         }
 
-        public int Create(Cart cart, Customer customer)
+        public int Create(Customer customer, int cartId)
         {
             using (var connection = new MySqlConnection(this.connectionString))
             {
@@ -47,9 +38,10 @@ namespace ECommerce.Models
 
                 connection.Execute("INSERT INTO customer (Name, Address, ZipCode, City, Country) VALUES (@name, @address, @zipCode, @city, @country)", customer);
                 var customerId = connection.QuerySingleOrDefault<int>("SELECT CustomerId FROM customer ORDER BY CustomerId DESC LIMIT 1");
-                var cartId = cart.CartId;
 
-                connection.Execute("INSERT INTO orders (CartId, CustomerId, TotalPrice) VALUES (@cartId, @customerId, @totalPrice)",
+                var productPrice = connection.QuerySingleOrDefault<int>("SELECT ProductPrice FROM products");
+
+                connection.Execute("INSERT INTO orderItem (Quantity, ProductPrice, ProductName) VALUES (@quantity, @productprice, @productname)",
                 new { cartId, customerId, totalPrice });
                 var orderId = connection.QuerySingleOrDefault<int>("SELECT orderId FROM orders ORDER BY orderId DESC LIMIT 1");
                 return orderId;
