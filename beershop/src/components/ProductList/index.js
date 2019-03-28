@@ -35,27 +35,24 @@ const ProductListStyled = styled.div`
             background: #c6cbce;
         }
     }
-
 `;
 
 const ProductList = ({onClick, image, name, description, price, props}) => {
     return (
         <ProductListStyled>
-        {/* {console.log(name)} */}
             <h1>{name}</h1>
             <img src={image} alt="" />
             <p>{description}</p>
             <p>{price} SEK</p>
             <button onClick={onClick}>Buy it here!</button>
         </ProductListStyled>   
-);
-};
+)};
 
 ProductList.propTypes = {
         image: PropTypes.string,
         name: PropTypes.string,
         description: PropTypes.string,
-        price: PropTypes.string,
+        price: PropTypes.number,
 };
 
 export default ProductList;
