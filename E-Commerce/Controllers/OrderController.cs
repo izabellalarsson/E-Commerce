@@ -26,19 +26,6 @@ namespace ECommerce.Models
                 new CustomerRepository(connectionString));
         }
 
-        [HttpGet]
-        [ProducesResponseType(typeof(List<Order>), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(List<Order>), StatusCodes.Status404NotFound)]
-        public IActionResult Get()
-        {
-            var products = this.orderService.Get();
-            if (products == null)
-            {
-                return NotFound();
-            }
-            return Ok(products);
-        }
-
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(Cart), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Cart), StatusCodes.Status404NotFound)]

@@ -26,6 +26,7 @@ namespace ECommerce.Models
                 var order = connection.QuerySingleOrDefault<Order>("SELECT * FROM order WHERE OrderId = @id", new { id });
                 //order.Customer = connection.Query<Product>("SELECT * FROM orderItems c INNER JOIN cart p ON c.productName = p.ProductName AND c.ProductPrice = p.ProductPrice WHERE c.Cartid = @id", new { id }).ToList();
 
+                //order. = connection.Query<Order>("SELECT * FROM orderItems c INNER JOIN cart p ON c.productName = p.product.ProductName WHERE c.Cartid = @id", new { id }).ToList();
                 return order;
             }
         }

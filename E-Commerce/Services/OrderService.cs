@@ -27,7 +27,7 @@ namespace ECommerce.Models
         public Order Get(int id)
         {
             var order = orderRepository.Get(id);
-            order.Cart = cartRepository.Get();
+            order.Cart = cartRepository.Get(cartI);
             order.Customer = customerRepository.Get(order.CustomerId);
 
             return order;
