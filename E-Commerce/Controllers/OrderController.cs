@@ -10,7 +10,7 @@ using System.Web.Http.Cors;
 
 namespace ECommerce.Models
 {
-    [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
+    //[EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
     [Route("api/[controller]")]
     public class OrderController : Controller
     {
@@ -26,25 +26,40 @@ namespace ECommerce.Models
                 new CustomerRepository(connectionString));
         }
 
-        [HttpGet("{id}")]
-        [ProducesResponseType(typeof(Cart), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(Cart), StatusCodes.Status404NotFound)]
-        public IActionResult Get(int id)
+        [HttpGet]
+        [ProducesResponseType(typeof(List<Order>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<Order>), StatusCodes.Status404NotFound)]
+        public IActionResult Get()
         {
-            var cart = orderService.Get(id);
-            if (cart == null)
+            var orders = this.orderService.Get();
+
+            if (orders == null)
             {
                 return NotFound();
             }
-            return Ok(cart);
+
+            return Ok(orders);
+        }
+
+        [HttpGet("{id}")]
+        [ProducesResponseType(typeof(Order), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Order), StatusCodes.Status404NotFound)]
+        public IActionResult Get(int id)
+        {
+            var order = this.orderService.Get(id);
+            if (order == null)
+            {
+                return NotFound();
+            }
+            return Ok(order);
         }
 
         [HttpPost("{id}")]
         [ProducesResponseType(typeof(Order), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Order), StatusCodes.Status404NotFound)]
-        public IActionResult Create([FromBody]Customer customer, int cartId)
+        public IActionResult Create([FromBody]Order order)
         {
-            return Ok(this.orderService.Create(customer, cartId));
+            return Ok(this.orderService.Create(order.Cart, order.Customer));
         }
     }
 }

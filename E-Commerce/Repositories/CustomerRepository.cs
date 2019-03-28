@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
 using Dapper;
+using ECommerce.Models;
 using MySql.Data.MySqlClient;
 
 namespace ECommerce.Models
@@ -13,7 +8,6 @@ namespace ECommerce.Models
     public class CustomerRepository
     {
         private readonly string connectionString;
-
         public CustomerRepository(string connectionString)
         {
             this.connectionString = connectionString;
@@ -26,7 +20,15 @@ namespace ECommerce.Models
                 var customer = connection.QuerySingleOrDefault<Customer>("SELECT * FROM customer WHERE CustomerId = @id", new { id });
 
                 return customer;
+            }
+        }
 
+        public int Create(Customer customer)
+        {
+            using (var connection = new MySqlConnection(this.connectionString))
+            {
+                connection.Execute("INSERT INTO customer (Name, Address, ZipCode, City, Country) VALUES (@name, @address, @zipCode, @city, @country)", customer);
+                return connection.QuerySingleOrDefault<int>("SELECT CustomerId FROM customer ORDER BY CustomerId DESC LIMIT 1");
             }
         }
     }

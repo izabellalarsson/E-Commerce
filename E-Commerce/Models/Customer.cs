@@ -9,8 +9,8 @@ namespace ECommerce.Models
         public string Zipcode { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
-        public Customer()
 
+        public Customer()
         {
         }
     }
