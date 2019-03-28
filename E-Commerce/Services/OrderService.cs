@@ -24,15 +24,11 @@ namespace ECommerce.Models
             this.customerRepository = customerRepository;
         }
 
-        public List<Order> Get()
-        {
-            return this.orderRepository.Get();
-        }
 
         public Order Get(int id)
         {
             var order = orderRepository.Get(id);
-            order.Cart = cartRepository.Get();
+            order.Cart = cartRepository.Get(cartI);
             order.Customer = customerRepository.Get(order.CustomerId);
 
             return order;
