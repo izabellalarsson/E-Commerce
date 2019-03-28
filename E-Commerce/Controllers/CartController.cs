@@ -15,7 +15,7 @@ namespace ECommerce.Models
     //{
     //    // Controller methods not shown...
     //}
-    [EnableCors(origins: "http://e-commerce.test", headers: "*", methods: "*")]
+    [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
     [Route("api/[controller]")]
     public class CartController : Controller
     {
