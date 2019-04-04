@@ -10,7 +10,7 @@ using System.Web.Http.Cors;
 
 namespace ECommerce.Models
 {
-    //[EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
+    [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
     [Route("api/[controller]")]
     public class OrderController : Controller
     {
@@ -47,6 +47,7 @@ namespace ECommerce.Models
         public IActionResult Get(int id)
         {
             var order = this.orderService.Get(id);
+
             if (order == null)
             {
                 return NotFound();

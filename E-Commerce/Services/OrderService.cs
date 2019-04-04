@@ -52,7 +52,13 @@ namespace ECommerce.Models
             order.Cart = cartRepository.Get(cart.CartId);
             order.Customer = customerRepository.Get(order.CustomerId);
             //order.TotalPrice = cart.Products.Sum(item => item.ProductPrice);
+            //this.orderRepository.Delete(cart.CartId, order.CustomerId);
             return order;
         }
+
+        //public void Delete(int cartId, int customerId)
+        //{
+        //}
+
     }
 }

@@ -48,10 +48,18 @@ namespace ECommerce.Models
 
                 connection.Execute("INSERT INTO orders (CartId, CustomerId) VALUES (@cartId, @customerId)", new { cartId, customerId });
                 var orderId = connection.QuerySingleOrDefault<int>("SELECT OrderId FROM orders ORDER BY OrderId DESC LIMIT 1");
-
                 return orderId;
             }
         }
+
+        //public void Delete(int cartId, int customerId)
+        //{
+        //    using (var connection = new MySqlConnection(this.connectionString))
+        //    {
+        //        connection.Execute("DELETE FROM cart WHERE CartId = @cartId AND CustomerId = @customerId", new { cartId, customerId });
+
+        //    }
+        //}
 
     }
 }

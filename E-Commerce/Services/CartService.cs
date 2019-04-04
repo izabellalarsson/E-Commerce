@@ -48,6 +48,14 @@ namespace ECommerce.Models
 
         public Cart Add(int productId, int cartId, int quantity)
         {
+            var existingCart = cartRepository.Get(cartId);
+
+            if(existingCart == null)
+            {
+                this.cartRepository.Add(cartId);
+            }
+            // Skapa cart i tabellen cart
+
             this.cartRepository.Add(productId, cartId, quantity);
 
             var cart = cartRepository.Get(cartId);
